@@ -1,7 +1,7 @@
 logging:
   config: classpath:logback-spring.xml
-  path: ~/JavaDE/kotlin-for-springboot/logs
-  file: ~/JavaDE/kotlin-for-springboot/logs/application.log
+  path: ~/JavaDE/gugudan/logs
+  file: ~/JavaDE/gugudan/logs/application.log
   level:
     d2: warn
     org.springframework: info
@@ -11,7 +11,7 @@ logging:
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://localhost/~/JavaDE/kotlin-for-springboot/h2db/test #각자 맞게 수정
+    url: jdbc:h2:tcp://localhost/~/JavaDE/gugudan/h2db/gugudan #각자 맞게 수정
     username: sa
     password:
     initialize: false
