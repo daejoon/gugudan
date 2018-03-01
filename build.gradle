@@ -1,12 +1,12 @@
 buildscript {
     ext {
-        kotlin_version = '1.2.21'
-        spring_boot_version = '1.5.10.RELEASE'
-        querydsl_version = '4.1.4'
-        flyway_version = '5.0.7'
-        h2_version = '1.4.196'
-        yaml_version = '1.17'
-        kotlin_logging_version = '1.4.9'
+        kotlinVersion = '1.2.21'
+        springBootVersion = '2.0.0.RELEASE'
+        querydslVersion = '4.1.4'
+        flywayVersion = '5.0.7'
+        h2Version = '1.4.196'
+        yamlVersion = '1.17'
+        kotlinLoggingVersion = '1.4.9'
     }
 
     repositories {
@@ -16,13 +16,13 @@ buildscript {
     }
 
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}")
-        classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlin_version}")//기본은 final이다. open으로 변경한다.
-        classpath("org.jetbrains.kotlin:kotlin-noarg:${kotlin_version}")// 해당 클래스들의 기본 생성자(Arguments가 없는것)을 생성한다.
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${spring_boot_version}")
-        classpath("com.h2database:h2:${h2_version}")
-        classpath("gradle.plugin.com.boxfuse.client:gradle-plugin-publishing:${flyway_version}")
-        classpath("org.yaml:snakeyaml:${yaml_version}")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+        classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")//기본은 final이다. open으로 변경한다.
+        classpath("org.jetbrains.kotlin:kotlin-noarg:${kotlinVersion}")// 해당 클래스들의 기본 생성자(Arguments가 없는것)을 생성한다.
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("com.h2database:h2:${h2Version}")
+        classpath("gradle.plugin.com.boxfuse.client:gradle-plugin-publishing:${flywayVersion}")
+        classpath("org.yaml:snakeyaml:${yamlVersion}")
     }
 }
 
@@ -35,6 +35,7 @@ apply plugin: 'kotlin'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-spring'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.flywaydb.flyway'
 
 
@@ -108,7 +109,7 @@ springBoot  {
 
 flyway {
     url = SPRING_CONFIG.spring.datasource.url
-    user = SPRING_CONFIG.flyway.user
+    user = SPRING_CONFIG.spring.datasource.user
 }
 
 repositories {
@@ -116,17 +117,18 @@ repositories {
 }
 
 dependencies {
-    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}")// require
-    compile("org.jetbrains.kotlin:kotlin-reflect:${kotlin_version}")
+    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")// require
+    compile("org.jetbrains.kotlin:kotlin-reflect")
+    compile('com.fasterxml.jackson.module:jackson-module-kotlin')
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    compile("org.springframework.boot:spring-boot-devtools")
+    runtime("org.springframework.boot:spring-boot-devtools")
     testCompile("org.springframework.boot:spring-boot-starter-test")
-    compile("com.querydsl:querydsl-core:${querydsl_version}")
-    compile("com.querydsl:querydsl-jpa:${querydsl_version}")
-    kapt("com.querydsl:querydsl-apt:${querydsl_version}:jpa")// 끝에 :jpa로 끝난다.
-    compile("org.flywaydb:flyway-core:${flyway_version}")
+    compile("com.querydsl:querydsl-core")
+    compile("com.querydsl:querydsl-jpa")
+    kapt("com.querydsl:querydsl-apt:${querydslVersion}:jpa")// 끝에 :jpa로 끝난다.
+    compile("org.flywaydb:flyway-core")
     runtime("com.h2database:h2")
-    compile("io.github.microutils:kotlin-logging:${kotlin_logging_version}")
+    compile("io.github.microutils:kotlin-logging:${kotlinLoggingVersion}")
 }

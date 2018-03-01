@@ -14,7 +14,6 @@ spring:
     url: jdbc:h2:tcp://localhost/~/JavaDE/gugudan/h2db/gugudan #각자 맞게 수정
     username: sa
     password:
-    initialize: false
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
@@ -24,9 +23,3 @@ spring:
     properties:
       hibernate:
         format_sql: true
-
-flyway:
-  enabled: true
-  encoding: UTF-8
-  user: sa
-  password:
