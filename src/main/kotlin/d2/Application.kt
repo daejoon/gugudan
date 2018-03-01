@@ -1,7 +1,6 @@
 package d2
 
 import mu.KLogging
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.Banner
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -27,14 +26,8 @@ import org.springframework.web.bind.annotation.RestController
  */
 @RestController
 @SpringBootApplication
-class Application {
+class Application(val env: Environment, val buildInfo: BuildProperties) {
     companion object : KLogging()
-
-    @Autowired
-    lateinit var env: Environment
-
-    @Autowired
-    lateinit var buildInfo: BuildProperties
 
     @Bean
     fun init() = CommandLineRunner {
