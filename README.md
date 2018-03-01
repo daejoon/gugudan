@@ -7,7 +7,7 @@ CS 프로그램으로 만들어도 되지만 [Vue.Js](https://kr.vuejs.org/v2/gu
 
 ## Issues
 
-### IntelliJ IDEA에서 Run 했을띠 build-info.properties를 인식 못하는 문제
+#### `IntelliJ IDEA`에서 Run 했을때 `build-info.properties`를 인식 못하는 문제
 
 [여기를 참고](https://stackoverflow.com/questions/47542270/how-do-i-generate-build-info-properties-in-the-intellij-out-directory-on-debug)
 
