@@ -92,6 +92,7 @@ cmake-build-release/
 *.iws
 
 ## Plugin-specific files:
+*.ipr
 
 # IntelliJ
 out/
@@ -118,3 +119,8 @@ fabric.properties
 #node
 node_modules/
 
+docs/
+gugudan.ipr
+src/main/java/
+src/main/resources/db/
+src/test/

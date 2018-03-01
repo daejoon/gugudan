@@ -6,14 +6,13 @@ buildscript {
         flyway_version = '5.0.7'
         h2_version = '1.4.196'
         yaml_version = '1.17'
-        kotlin_logging = '1.4.9'
+        kotlin_logging_version = '1.4.9'
     }
 
     repositories {
         mavenCentral()
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url 'http://repo.spring.io/plugins-release' }
     }
 
     dependencies {
@@ -29,6 +28,7 @@ buildscript {
 
 /** plugins */
 apply plugin: 'idea'
+apply plugin: 'eclipse'
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'kotlin'
@@ -121,11 +121,12 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.springframework.boot:spring-boot-devtools")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
     compile("com.querydsl:querydsl-core:${querydsl_version}")
     compile("com.querydsl:querydsl-jpa:${querydsl_version}")
     kapt("com.querydsl:querydsl-apt:${querydsl_version}:jpa")// 끝에 :jpa로 끝난다.
     compile("org.flywaydb:flyway-core:${flyway_version}")
     runtime("com.h2database:h2")
-    testCompile("org.springframework.boot:spring-boot-starter-test")
-    compile("io.github.microutils:kotlin-logging:${kotlin_logging}")
+    compile("io.github.microutils:kotlin-logging:${kotlin_logging_version}")
 }

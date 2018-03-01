@@ -33,20 +33,17 @@ class Application {
     @Autowired
     lateinit var env: Environment
 
-    @Autowired(required = false)
-    var buildInfo: BuildProperties? = null
+    @Autowired
+    lateinit var buildInfo: BuildProperties
 
     @Bean
     fun init() = CommandLineRunner {
         logger.info("Profile: '{}'", env.activeProfiles)
-        logger.info("Version: '{}'", buildInfo?.version ?: "Failed to load.")
+        logger.info("Version: '{}'", buildInfo.version)
     }
 
-    @GetMapping(value = arrayOf("", "/"))
-    fun hello() = "Hello, Gugudan!"
-
     @GetMapping(value = arrayOf("/version"))
-    fun version() = "Gugudan v${buildInfo?.version}"
+    fun version() = "Gugudan v${buildInfo.version}"
 }
 
 fun main(args: Array<String>) {
