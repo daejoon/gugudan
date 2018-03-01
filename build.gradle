@@ -67,8 +67,8 @@ final SPRING_CONFIG = {
 
 
 group = 'd2'
-version = '0.0.3'
-buildDir = 'out'
+version = '0.0.4'
+buildDir = 'build'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 mainClassName = 'd2.ApplicationKt'
