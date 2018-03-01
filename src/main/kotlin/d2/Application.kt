@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.boot.info.BuildProperties
+import org.springframework.context.annotation.Bean
 import org.springframework.core.env.Environment
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
@@ -26,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController
  */
 @RestController
 @SpringBootApplication
-class Application: CommandLineRunner {
+class Application {
     companion object : KLogging()
 
     @Autowired
@@ -35,13 +36,17 @@ class Application: CommandLineRunner {
     @Autowired(required = false)
     var buildInfo: BuildProperties? = null
 
-    override fun run(vararg args: String?) {
+    @Bean
+    fun init() = CommandLineRunner {
         logger.info("Profile: '{}'", env.activeProfiles)
         logger.info("Version: '{}'", buildInfo?.version ?: "Failed to load.")
     }
 
     @GetMapping(value = arrayOf("", "/"))
-    fun hello() : String = "GuGuDan"
+    fun hello() = "Hello, Gugudan!"
+
+    @GetMapping(value = arrayOf("/version"))
+    fun version() = "Gugudan v${buildInfo?.version}"
 }
 
 fun main(args: Array<String>) {
