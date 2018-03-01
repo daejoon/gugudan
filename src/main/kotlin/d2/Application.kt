@@ -1,6 +1,6 @@
 package d2
 
-import org.slf4j.LoggerFactory
+import mu.KLogging
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.Banner
 import org.springframework.boot.CommandLineRunner
@@ -12,13 +12,22 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
 /**
+ *   ________ ____ ___  ________ ____ ___________      _____    _______
+ *  /  _____/|    |   \/  _____/|    |   \______ \    /  _  \   \      \
+ * /   \  ___|    |   /   \  ___|    |   /|    |  \  /  /_\  \  /   |   \
+ * \    \_\  \    |  /\    \_\  \    |  / |    `   \/    |    \/    |    \
+ *  \______  /______/  \______  /______/ /_______  /\____|__  /\____|__  /
+ *         \/                 \/                 \/         \/         \/
+ *
+ * @See <a href="http://patorjk.com/software/taag/#p=display&f=Graffiti&t=GUGUDAN">http://patorjk.com/</>
+ *
  * @Author kdj
  * @Date 2018. 3. 1.
  */
 @RestController
 @SpringBootApplication
 class Application: CommandLineRunner {
-    private val log = LoggerFactory.getLogger(Application::class.java)
+    companion object : KLogging()
 
     @Autowired
     lateinit var env: Environment
@@ -27,12 +36,12 @@ class Application: CommandLineRunner {
     var buildInfo: BuildProperties? = null
 
     override fun run(vararg args: String?) {
-        log.info("Profile: '{}'", env.activeProfiles)
-        log.info("Version: '{}'", buildInfo?.version ?: "Failed to load.")
+        logger.info("Profile: '{}'", env.activeProfiles)
+        logger.info("Version: '{}'", buildInfo?.version ?: "Failed to load.")
     }
 
     @GetMapping(value = arrayOf("", "/"))
-    fun hello() = "GuGuDan"
+    fun hello() : String = "GuGuDan"
 }
 
 fun main(args: Array<String>) {

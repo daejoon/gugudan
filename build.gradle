@@ -6,6 +6,7 @@ buildscript {
         flyway_version = '5.0.7'
         h2_version = '1.4.196'
         yaml_version = '1.17'
+        kotlin_logging = '1.4.9'
     }
 
     repositories {
@@ -126,4 +127,5 @@ dependencies {
     compile("org.flywaydb:flyway-core:${flyway_version}")
     runtime("com.h2database:h2")
     testCompile("org.springframework.boot:spring-boot-starter-test")
+    compile("io.github.microutils:kotlin-logging:${kotlin_logging}")
 }

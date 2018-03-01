@@ -1,9 +1,9 @@
 logging:
   config: classpath:logback-spring.xml
-  path: ~/JavaDE/gugudan/logs
-  file: ~/JavaDE/gugudan/logs/application.log
+  path: /Users/kdj/JavaDE/gugudan/logs
+  file: /Users/kdj/JavaDE/gugudan/logs/application.log
   level:
-    d2: warn
+    d2: info
     org.springframework: info
     org.thymeleaf: info
     org.hibernate.SQL: info
