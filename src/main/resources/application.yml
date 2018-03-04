@@ -1,7 +1,7 @@
 logging:
   config: classpath:logback-spring.xml
-  path: /Users/kdj/JavaDE/gugudan/logs
-  file: /Users/kdj/JavaDE/gugudan/logs/application.log
+  path: /Users/kdj/Projects/external_env/gugudan/logs
+  file: /Users/kdj/Projects/external_env/gugudan/logs/application.log
   level:
     d2: info
     org.springframework: info
@@ -11,7 +11,7 @@ logging:
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://localhost/~/JavaDE/gugudan/h2db/gugudan #각자 맞게 수정
+    url: jdbc:h2:tcp://localhost/~/Projects/external_env/gugudan/h2db/gugudan #각자 맞게 수정
     username: sa
     password:
   jpa:
@@ -23,3 +23,4 @@ spring:
     properties:
       hibernate:
         format_sql: true
+    open-in-view: true
