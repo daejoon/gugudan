@@ -1,15 +1,22 @@
 package d2
 
+import com.zaxxer.hikari.HikariConfig
+import com.zaxxer.hikari.HikariDataSource
+import d2.config.DataSourceProp
+import d2.config.HikariPorp
 import mu.KLogging
+import org.h2.tools.Server
 import org.springframework.boot.Banner
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.boot.info.BuildProperties
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Profile
 import org.springframework.core.env.Environment
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
+import javax.sql.DataSource
 
 /**
  *   ________ ____ ___  ________ ____ ___________      _____    _______
@@ -37,6 +44,22 @@ class Application(val env: Environment, val buildInfo: BuildProperties) {
 
     @GetMapping(value = arrayOf("/version"))
     fun version() = "Gugudan v${buildInfo.version}"
+
+    @Bean
+    @Profile("djko")
+    fun datasource(prop: DataSourceProp, hikari: HikariPorp) : DataSource {
+        Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9092").start()
+
+        val config = HikariConfig()
+        config.poolName = hikari.poolName
+        config.connectionTestQuery = hikari.connectionTestQuery
+        config.driverClassName = prop.driverClassName
+        config.username = prop.username
+        config.password = prop.password
+        config.jdbcUrl = prop.url
+
+        return HikariDataSource(config)
+    }
 }
 
 fun main(args: Array<String>) {
