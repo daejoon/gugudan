@@ -3,7 +3,6 @@ package d2
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import d2.config.DataSourceProp
-import d2.config.HikariPorp
 import mu.KLogging
 import org.h2.tools.Server
 import org.springframework.boot.Banner
@@ -47,12 +46,12 @@ class Application(val env: Environment, val buildInfo: BuildProperties) {
 
     @Bean
     @Profile("djko")
-    fun datasource(prop: DataSourceProp, hikari: HikariPorp) : DataSource {
+    fun datasource(prop: DataSourceProp) : DataSource {
         Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9092").start()
 
         val config = HikariConfig()
-        config.poolName = hikari.poolName
-        config.connectionTestQuery = hikari.connectionTestQuery
+        config.poolName = prop.hikari.poolName
+        config.connectionTestQuery = prop.hikari.connectionTestQuery
         config.driverClassName = prop.driverClassName
         config.username = prop.username
         config.password = prop.password
