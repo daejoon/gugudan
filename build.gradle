@@ -134,8 +134,11 @@ dependencies {
     compile("com.querydsl:querydsl-jpa")
     compile("org.flywaydb:flyway-core")
     compile("io.github.microutils:kotlin-logging:${kotlinLoggingVersion}")
+    compile("com.h2database:h2")
     runtime("org.springframework.boot:spring-boot-devtools")
-    runtime("com.h2database:h2")
     kapt("com.querydsl:querydsl-apt:${querydslVersion}:jpa")// 끝에 :jpa로 끝난다.
+    compile("org.springframework.boot:spring-boot-configuration-processor")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
+
+compileJava.dependsOn(processResources)
