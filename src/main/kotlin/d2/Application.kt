@@ -2,6 +2,7 @@ package d2
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
+import d2.config.DEFINE
 import d2.config.DataSourceProp
 import mu.KLogging
 import org.h2.tools.Server
@@ -45,7 +46,7 @@ class Application(val env: Environment, val buildInfo: BuildProperties) {
     fun version() = "Gugudan v${buildInfo.version}"
 
     @Bean
-    @Profile("djko")
+    @Profile(DEFINE.NOT_PRODUCTION)
     fun datasource(prop: DataSourceProp) : DataSource {
         Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9092").start()
 
