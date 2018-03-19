@@ -42,7 +42,7 @@ class Application(val env: Environment, val buildInfo: BuildProperties) {
         logger.info("Version: '{}'", buildInfo.version)
     }
 
-    @GetMapping(value = arrayOf("/version"))
+    @GetMapping(value = ["/version"])
     fun version() = "Gugudan v${buildInfo.version}"
 
     @Bean
