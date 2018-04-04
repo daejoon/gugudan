@@ -5,30 +5,30 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "EXAM_HIST_MASTER")
-class EXAM_HIST_MASTER(
+data class EXAM_HIST_MASTER(
         @Id
         @Column(name = "ID", nullable = false)
         @GeneratedValue(strategy = GenerationType.AUTO)
-        var id: Long,
+        val id: Long? = null,
 
         @Column(name = "OPER_TYPE", nullable = false)
-        var oper_type: String,
+        val oper_type: String? = null,
 
         @Column(name = "LEVEL", nullable = false)
-        var level: String,
+        val level: String? = null,
 
         @Column(name = "EXAM_COUNT", nullable = false)
-        var exam_count: Int,
+        val exam_count: Int? = null,
 
         @Column(name = "SCORE", nullable = false)
-        var score: Int,
+        val score: Int? = null,
 
         @Column(name = "TEST_TIME", nullable = false)
-        var test_time: Long,
+        val test_time: Long? = null,
 
         @Column(name = "CREATE_DATETIME", nullable = false)
-        var create_datetime: Date,
+        val create_datetime: Date? = null,
 
         @Column(name = "UPDATE_DATETIME", nullable = false)
-        var update_datetime: Date
+        val update_datetime: Date? = null
 )
