@@ -71,7 +71,7 @@ final SPRING_CONFIG = {
 
 
 group = 'd2'
-version = '0.0.4'
+version = '0.0.5'
 buildDir = 'build'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
