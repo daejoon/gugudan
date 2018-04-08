@@ -1,7 +1,7 @@
-package d2.mvc.home
+package d2.view.home
 
-import d2.repository.ExamDetailRepository
-import d2.repository.ExamMasterRepository
+import d2.repositories.ExamDetailRepository
+import d2.repositories.ExamMasterRepository
 import mu.KLogging
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping

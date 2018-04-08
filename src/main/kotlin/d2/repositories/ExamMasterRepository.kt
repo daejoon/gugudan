@@ -1,4 +1,4 @@
-package d2.repository
+package d2.repositories
 
 import d2.models.EXAM_HIST_MASTER
 import d2.models.QEXAM_HIST_MASTER

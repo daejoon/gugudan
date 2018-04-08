@@ -1,4 +1,4 @@
-package d2.repository
+package d2.repositories
 
 import d2.models.EXAM_HIST_DETAIL
 import d2.models.QEXAM_HIST_DETAIL
