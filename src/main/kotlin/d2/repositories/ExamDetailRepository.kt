@@ -19,6 +19,7 @@ interface ExamDetailRepository : ExamDetailQueryDslRepository, JpaRepository<EXA
 @Transactional
 @Repository
 class ExamDetailRepositoryImpl : QuerydslRepositorySupport(EXAM_HIST_DETAIL::class.java), ExamDetailQueryDslRepository {
+
     override fun list(): List<EXAM_HIST_DETAIL> {
         val detail = QEXAM_HIST_DETAIL.eXAM_HIST_DETAIL
         val master = QEXAM_HIST_MASTER.eXAM_HIST_MASTER

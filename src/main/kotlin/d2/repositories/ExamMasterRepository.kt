@@ -24,4 +24,5 @@ class ExamMasterRepositoryImpl : QuerydslRepositorySupport(EXAM_HIST_MASTER::cla
         return from(master)
                 .fetch()
     }
+
 }
