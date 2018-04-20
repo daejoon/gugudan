@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        kotlinVersion = '1.2.31'
+        kotlinVersion = '1.2.40'
         springBootVersion = '2.0.1.RELEASE'
         querydslVersion = '4.2.1'
         flywayVersion = '5.0.7'
@@ -71,7 +71,7 @@ final SPRING_CONFIG = {
 
 
 group = 'd2'
-version = '0.0.5'
+version = '0.0.6'
 buildDir = 'build'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -139,7 +139,7 @@ dependencies {
     compile("org.flywaydb:flyway-core")
     compile("io.github.microutils:kotlin-logging:${kotlinLoggingVersion}")
     compile("com.h2database:h2")
-    runtime("org.springframework.boot:spring-boot-devtools")
+//    runtime("org.springframework.boot:spring-boot-devtools")
     kapt("com.querydsl:querydsl-apt:${querydslVersion}:jpa")// 끝에 :jpa로 끝난다.
     compile("org.springframework.boot:spring-boot-configuration-processor")
     testCompile("org.springframework.boot:spring-boot-starter-test")
