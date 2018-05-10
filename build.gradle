@@ -1,7 +1,7 @@
 buildscript {
     ext {
         kotlinVersion = '1.2.40'
-        springBootVersion = '2.0.1.RELEASE'
+        springBootVersion = '2.0.2.RELEASE'
         querydslVersion = '4.2.1'
         flywayVersion = '5.0.7'
         h2Version = '1.4.196'
@@ -12,7 +12,7 @@ buildscript {
     repositories {
         mavenCentral()
         maven { url "https://plugins.gradle.org/m2/" }
-        maven { url 'http://repo.spring.io/plugins-release' }
+        maven { url "http://repo.spring.io/plugins-release" }
     }
 
     dependencies {
@@ -133,9 +133,9 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     compile("org.jetbrains.kotlin:kotlin-reflect")
-    compile('com.fasterxml.jackson.module:jackson-module-kotlin')
-    compile("com.querydsl:querydsl-core")
-    compile("com.querydsl:querydsl-jpa")
+    compile("com.fasterxml.jackson.module:jackson-module-kotlin")
+    compile("com.querydsl:querydsl-core:${querydslVersion}")
+    compile("com.querydsl:querydsl-jpa:${querydslVersion}")
     compile("org.flywaydb:flyway-core")
     compile("io.github.microutils:kotlin-logging:${kotlinLoggingVersion}")
     compile("com.h2database:h2")
