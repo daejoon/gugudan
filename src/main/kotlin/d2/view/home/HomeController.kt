@@ -19,7 +19,7 @@ class HomeController(
 ) {
     companion object : KLogging()
 
-    @GetMapping(value = ["", "/ "])
+    @GetMapping(value = ["", "/"])
     fun hello() = "home"
 
     @GetMapping(value = ["/master"])
