@@ -1,8 +1,7 @@
 buildscript {
     ext {
-        kotlinVersion = '1.2.41'
-        springBootVersion = '2.0.2.RELEASE'
-        querydslVersion = '4.2.1'
+        kotlinVersion = '1.2.50'
+        springBootVersion = '2.0.3.RELEASE'
         flywayVersion = '5.0.7'
         h2Version = '1.4.196'
         yamlVersion = '1.17'
@@ -48,25 +47,23 @@ allOpen {
  * 프로파일이 존재하면 application-{profile}.yml을 로딩한다.
  * 프로파일이 존재하지 않는다면 application.yml을 로딩한다.
  */
-final SPRING_CONFIG = {
-    final PROFILE  = System.getProperty("spring.profiles.active")
-    final DEFAULT_YML = "src/main/resources/application.yml"
-    final LoadConfig = { path -> new org.yaml.snakeyaml.Yaml().load(new File(path).newInputStream()) }
-    println "Profile: '${PROFILE}'"
-
-    def spring_config
-    if (PROFILE) {
+def SPRING_CONFIG = {
+    def PROFILE  = System.getProperty("spring.profiles.active") ?: System.getenv("SPRING_PROFILES_ACTIVE")
+    def PROFILE_YML = "${project.projectDir}/src/main/resources/application-${PROFILE}.yml"
+    def DEFAULT_YML = "${project.projectDir}/src/main/resources/application.yml"
+    def LoadConfig = { path ->
         try {
-            spring_config = LoadConfig("src/main/resources/application-${PROFILE}.yml")
+            return new org.yaml.snakeyaml.Yaml().load(new File(path).newInputStream())
         } catch (FileNotFoundException ex) {
-            println ex.getMessage()
-            spring_config = LoadConfig(DEFAULT_YML)
+            println ex.message
+            return null
         }
-    } else {
-        spring_config = LoadConfig(DEFAULT_YML)
     }
 
-    return spring_config
+    println "Profile: ${PROFILE}"
+    println "ProjectDir = ${project.projectDir}"
+
+    return LoadConfig(PROFILE_YML) ?: LoadConfig(DEFAULT_YML)
 }()
 
 
@@ -134,13 +131,13 @@ dependencies {
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     compile("org.jetbrains.kotlin:kotlin-reflect")
     compile("com.fasterxml.jackson.module:jackson-module-kotlin")
-    compile("com.querydsl:querydsl-core:${querydslVersion}")
-    compile("com.querydsl:querydsl-jpa:${querydslVersion}")
+    compile("com.querydsl:querydsl-core")
+    compile("com.querydsl:querydsl-jpa")
     compile("org.flywaydb:flyway-core")
     compile("io.github.microutils:kotlin-logging:${kotlinLoggingVersion}")
     compile("com.h2database:h2")
-//    runtime("org.springframework.boot:spring-boot-devtools")
-    kapt("com.querydsl:querydsl-apt:${querydslVersion}:jpa")// 끝에 :jpa로 끝난다.
+    runtime("org.springframework.boot:spring-boot-devtools")
+    kapt("com.querydsl:querydsl-apt:4.1.4:jpa")// 끝에 :jpa로 끝난다.
     compile("org.springframework.boot:spring-boot-configuration-processor")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
