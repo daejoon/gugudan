@@ -116,8 +116,11 @@ springBoot  {
 }
 
 flyway {
-    url = SPRING_CONFIG.spring.datasource.url
-    user = SPRING_CONFIG.spring.datasource.username
+    url = SPRING_CONFIG?.spring?.flyway?.gradle?.url
+    user = SPRING_CONFIG?.spring?.flyway?.user
+
+    println "flyway.url=${url}"
+    println "flyway.user=${user}"
 }
 
 repositories {
