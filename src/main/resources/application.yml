@@ -37,3 +37,16 @@ spring:
   devtools:
     livereload:
       enabled: true
+  # flywaydb setting
+  flyway:
+    enabled: false
+    encoding: UTF-8
+    check-location: true # 마이그레이션 스크립트 파일이 존재하는지 여부를 확인
+    locations: classpath:db/migration/{vendor}/ # 마이그레이션 스크립트 위치
+    baseline-version: 1 # 마이그레이션을 시작할 번호
+    sql-migration-prefix: V
+    url: jdbc:h2:tcp://localhost:9092/~/Projects/external_env/gugudan/h2db/gugudan;MVCC=TRUE  # Flyway 소유의 데이터소스를 생성하려고 하는 경우 사용
+    user: sa # Flyway 소유의 데이터소스를 생성하려고 하는 경우 사용
+    password: # Flyway 소유의 데이터소스를 생성하려고 하는 경우 사용
+    gradle: # extend properties
+      url: jdbc:h2:~/Projects/external_env/external_env/gugudan/h2db/gugudan;MVCC=TRUE
