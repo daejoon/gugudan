@@ -1,6 +1,6 @@
 package d2.models
 
-import java.util.*
+import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
@@ -27,8 +27,8 @@ data class EXAM_HIST_MASTER(
         val test_time: Long? = null,
 
         @Column(name = "CREATE_DATETIME", nullable = false)
-        val create_datetime: Date? = null,
+        val create_datetime: LocalDateTime? = null,
 
         @Column(name = "UPDATE_DATETIME", nullable = false)
-        val update_datetime: Date? = null
+        val update_datetime: LocalDateTime? = null
 )

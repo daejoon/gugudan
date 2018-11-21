@@ -1,14 +1,15 @@
 buildscript {
     ext {
-        kotlinVersion = '1.2.51'
-        springBootVersion = '2.0.3.RELEASE'
-        flywayVersion = '5.0.7'
-        h2Version = '1.4.196'
-        yamlVersion = '1.17'
+        kotlinVersion = '1.3.10'
+        springBootVersion = '2.1.0.RELEASE'
+        flywayVersion = '5.2.1'
+        h2Version = '1.4.197'
+        yamlVersion = '1.23'
         kotlinLoggingVersion = '1.4.9'
     }
 
     repositories {
+        jcenter()
         mavenCentral()
         maven { url "https://plugins.gradle.org/m2/" }
         maven { url "http://repo.spring.io/plugins-release" }
@@ -19,9 +20,9 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")//기본은 final이다. open으로 변경한다.
         classpath("org.jetbrains.kotlin:kotlin-noarg:${kotlinVersion}")//해당 클래스들의 기본 생성자(Arguments가 없는것)을 생성한다.
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("com.h2database:h2:${h2Version}")
         classpath("gradle.plugin.com.boxfuse.client:gradle-plugin-publishing:${flywayVersion}")
-        classpath("org.yaml:snakeyaml:${yamlVersion}")
+        classpath("com.h2database:h2:1.4.197")
+        classpath("org.yaml:snakeyaml:1.23")
     }
 }
 
@@ -34,7 +35,6 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'java'
 apply plugin: 'application'
-apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'org.flywaydb.flyway'
 
