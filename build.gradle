@@ -36,6 +36,7 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'eclipse'
+apply plugin: 'idea'
 apply plugin: 'org.flywaydb.flyway'
 
 allOpen {
