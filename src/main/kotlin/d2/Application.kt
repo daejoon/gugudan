@@ -5,10 +5,8 @@ import org.springframework.boot.Banner
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.builder.SpringApplicationBuilder
-import org.springframework.boot.info.BuildProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.core.env.Environment
-import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
 /**
@@ -26,17 +24,13 @@ import org.springframework.web.bind.annotation.RestController
  */
 @RestController
 @SpringBootApplication
-class Application(val env: Environment, val buildInfo: BuildProperties) {
+class Application(val env: Environment) {
     companion object : KLogging()
 
     @Bean
     fun init() = CommandLineRunner {
         logger.info("Profile: '{}'", env.activeProfiles)
-        logger.info("Version: '{}'", buildInfo.version)
     }
-
-    @GetMapping(value = ["/version"])
-    fun version() = "Gugudan v${buildInfo.version}"
 }
 
 fun main(args: Array<String>) {
