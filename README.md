@@ -12,9 +12,9 @@ CS 프로그램으로 만들어도 되지만 [Vue.Js](https://kr.vuejs.org/v2/gu
 
 `Preferences` | `Build, Execution, Deployment` | `Build Tools` | `Gradle` | `Enable Delegate IDE build/run actions to Gradle`
 
-## Reference
+## References
 
-* [Spring Boot](https://projects.spring.io/spring-boot/)
-* [Vue.Js](https://kr.vuejs.org/v2/guide/index.html)
-* [kotlin-logging](https://github.com/MicroUtils/kotlin-logging)
+- [Spring Boot](https://projects.spring.io/spring-boot/)
+- [Vue.Js](https://kr.vuejs.org/v2/guide/index.html)
+- [kotlin-logging](https://github.com/MicroUtils/kotlin-logging)
 
